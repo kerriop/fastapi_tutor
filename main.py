@@ -5,11 +5,11 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+@app.get('/')
+def home():
+    return {"key": "hello"}
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+@app.get('/{pk}')
+def get_item(pk: int, q: str = None):
+    return {"key": pk, "q": q}
